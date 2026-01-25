@@ -2,6 +2,8 @@ import { useState } from 'react'
 import './App.css'
 import { db } from './firebase'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+//import IssueList from "./features/survey-ui/IssueList";
+//import IssueSlider from "./features/survey-ui/IssueSlider";
 
 const API_BASE = "http://127.0.0.1:5000"
 
@@ -32,6 +34,7 @@ function App() {
     return initial
   })
 
+  const [touched, setTouched] = useState({})
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -40,7 +43,13 @@ function App() {
       ...prev,
       [issueId]: Number(value)
     }))
+    setTouched(prev => ({
+      ...prev,
+      [issueId]: true
+    }))
   }
+
+  const allTouched = questions.every((q) => touched[q.id])
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -50,15 +59,12 @@ function App() {
     const data = {
       county: "Pinellas",
       responses: answers,
-      submittedAt: serverTimestamp() 
+      submittedAt: serverTimestamp()
     }
 
     try {
       console.log('Submitting:', data)
-      
-      // Submit to Firebase
       await addDoc(collection(db, 'surveys'), data)
-      
       setSubmitted(true)
     } catch (err) {
       console.error('Error submitting survey:', err)
@@ -76,6 +82,7 @@ function App() {
           <p>Thank you for participating in the Pinellas County community survey.</p>
           <button onClick={() => {
             setSubmitted(false)
+            setTouched({})
             let reset = {}
             questions.forEach((q) => reset[q.id] = 5)
             setAnswers(reset)
@@ -118,9 +125,13 @@ function App() {
           </div>
         ))}
 
-        <button type="submit" className="submit-btn" disabled={loading}>
+        <button type="submit" className="submit-btn" disabled={!allTouched || loading}>
           {loading ? 'Submitting...' : 'Submit'}
         </button>
+
+        {!allTouched && (
+          <p className="hint">Please answer all questions to submit</p>
+        )}
       </form>
     </div>
   )

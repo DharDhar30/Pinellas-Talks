@@ -80,6 +80,7 @@ header p {
   border-radius: 3px;
   background: #ddd;
   outline: none;
+  appearance: none;
   -webkit-appearance: none;
 }
 
@@ -141,13 +142,20 @@ header p {
   cursor: pointer;
 }
 
-.submit-btn:hover {
+.submit-btn:hover:not(:disabled) {
   background: #1d4ed8;
 }
 
 .submit-btn:disabled {
   background: #aaa;
   cursor: not-allowed;
+}
+
+.hint {
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  margin-top: -15px;
 }
 
 .thankyou {
