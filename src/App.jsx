@@ -3,7 +3,7 @@ import './App.css'
 import { db } from './firebase'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import IssueList from "./features/survey-ui/IssueList";
-import IssueSlider from "./features/survey-ui/IssueList";
+import IssueSlider from "./features/survey-ui/IssueSlider";
 
 const API_BASE = "http://127.0.0.1:5000"
 
