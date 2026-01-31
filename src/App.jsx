@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { db } from './firebase'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
-import { submitServey } from './services/surveyService';
+import { submitSurvey } from './services/surveyService';
 //import IssueList from "./features/survey-ui/IssueList";
 //import IssueSlider from "./features/survey-ui/IssueSlider";
 import React from 'react';
