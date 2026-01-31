@@ -75,43 +75,41 @@ function App() {
 
   if (submitted) {
     return (
-      <div 
-      className="app"
-      style={{
-      minHeight: "100vh"
-     }}
-    >
-      <div className="container">
-        <div className="thankyou">
-          <h1>Thank You!</h1>
-          <p>Your responses have been recorded.</p>
-          <p>Thank you for participating in the Pinellas County community survey.</p>
-          <button onClick={() => {
-            setSubmitted(false)
-            setTouched({})
-            let reset = {}
-            questions.forEach((q) => reset[q.id] = 5)
-            setAnswers(reset)
+      <div className="app">
+        <div className="container">
+          <div className="thankyou">
+            <h1>Thank You!</h1>
+            <p>Your responses have been recorded.</p>
+            <p>Thank you for participating in the Pinellas County community survey.</p>
+            <button onClick={() => {
+              setSubmitted(false)
+              setTouched({})
+              let reset = {}
+              questions.forEach((q) => reset[q.id] = 5)
+              setAnswers(reset)
           }}>
-            Take Again
+              Take Again
           </button>
         </div>
       </div>
-    )
-  }
-      
-      <header>
-        <h1>Community Issues Survey</h1>
-        <span className="badge">Pinellas County, Florida</span>
-        <p>Rate your agreement with each statement from 1-10</p>
-        <div className="scale-info">
-          <span>1 = Strongly Disagree</span>
-          <span>10 = Strongly Agree</span>
-        </div>
-      </header>
+    </div>
+  );
+}
+  return (
+    <div className="app">
+      <div className="container">
+        <header>
+          <h1>Community Issues Survey</h1>
+          <span className="badge">Pinellas County, Florida</span>
+          <p>Rate your agreement with each statement from 1-10</p>
+          <div className="scale-info">
+            <span>1 = Strongly Disagree</span>
+            <span>10 = Strongly Agree</span>
+          </div>
+        </header>
 
-      <form onSubmit={handleSubmit}>
-        {questions.map((question, index) => (
+        <form onSubmit={handleSubmit}>
+          {questions.map((question, index) => (
           <div className="question-box" key={question.id}>
             <p><strong>{index + 1}.</strong> {question.text}</p>
             <input
@@ -129,7 +127,11 @@ function App() {
           </div>
         ))}
 
-        <button type="submit" className="submit-btn" disabled={!allTouched || loading}>
+        <button 
+          type="submit" 
+          className="submit-btn" 
+          disabled={!allTouched || loading}
+        >
           {loading ? 'Submitting...' : 'Submit'}
         </button>
 
@@ -138,7 +140,8 @@ function App() {
         )}
       </form>
     </div>
-  )
+  </div>
+  );
 }
 
 export default App
