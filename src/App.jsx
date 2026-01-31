@@ -63,7 +63,7 @@ function App() {
     // Abstracted verion of the submission logic to work smoother with backend changes
     try {  // Using the imported service function to submit the survey
       
-      const docId = await submitServey("Pinellas", answers); 
+      const docId = await submitSurvey("Pinellas", answers); 
       console.log('Success! ID:', docId); 
       setSubmitted(true);
     } catch (err) {
