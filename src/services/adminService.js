@@ -1,5 +1,5 @@
 import{db} from'../firebase.js';
-import{collection,addDoc,serverTimestamp, orderBy}from'firebase/firestore';
+import{collection,getDocs,query, orderBy}from'firebase/firestore';
 
 export const fetchSurveyData = async () => {
   try {
