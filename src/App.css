@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+
 :root {
-  --bg: #F5F5F5;       /* Primary background */
-  --text: #013364;     /* Main dark blue */
-  --accent: #E1E8ED;   /* Light blue accent */
-  --red: #D30B0D;      /* Red for buttons */
+  --bg: #F5F5F5;
+  --text: #013364;
+  --accent: #E1E8ED;
+  --red: #D30B0D;
+  --font-body: 'Inter', Arial, sans-serif;
+  --font-heading: 'Montserrat', Arial, sans-serif;
+  --font-questions: 'Inter', Arial, sans-serif; 
 }
 
 * {
@@ -12,7 +17,7 @@
 }
 
   body {
-    font-family: Arial, sans-serif;
+  font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
 }
@@ -41,6 +46,7 @@ header {
 }
 
 header h1 {
+  font-family: var(--font-heading);
   margin-bottom: 10px;
 }
 
@@ -57,9 +63,13 @@ header h1 {
 
 header p {
   color: #666;
+  font-family: var(--font-body);
+  font-weight: 600;
 }
 
 .scale-info {
+  font-family: var(--font-body);
+  font-weight: 600;
   display: flex;
   justify-content: space-between;
   max-width: 350px;
@@ -69,6 +79,8 @@ header p {
 }
 
 .question-box {
+  font-family: var(--font-questions);
+  font-weight: 600;
   background: var(--bg);
   padding: 20px;
   margin-bottom: 12px;
@@ -131,11 +143,12 @@ header p {
   display: flex;
   justify-content: space-between;
   font-size: 11px;
-  color: #aaa;
+  color: var(--text);
   padding: 0 2px;
 }
 
 .submit-btn {
+  font-family: var(--font-heading);
   display: block;
   width: 100%;
   max-width: 300px;
@@ -160,6 +173,7 @@ header p {
 }
 
 .hint {
+  font-family: var(--font-body);
   text-align: center;
   color: #888;
   font-size: 14px;
@@ -178,14 +192,19 @@ header p {
 .thankyou h1 {
   color: var(--text);
   margin-bottom: 15px;
+  font-family: var(--font-heading);
+  font-weight: 600;
 }
 
 .thankyou p {
   color: #666;
   margin-bottom: 8px;
+  font-family: var(--font-heading);
 }
 
 .thankyou button {
+  font-family: var(--font-body);
+  font-weight: 600;
   margin-top: 25px;
   padding: 10px 25px;
   background: white;
