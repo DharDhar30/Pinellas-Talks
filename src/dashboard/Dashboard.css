@@ -1,0 +1,129 @@
+/* THEME COLORS */
+:root {
+  --bg-primary: #F5F5F5;
+  --blue-dark: #013364;
+  --blue-light: #E1E8ED;
+  --red-accent: #D30B0D;
+}
+
+/* PAGE */
+.dashboard-container {
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  padding: 40px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--blue-dark);
+}
+
+/* HEADER */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.subtext {
+  margin-top: 6px;
+  color: var(--blue-dark);
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+/* BUTTON */
+.logout-btn {
+  background-color: var(--blue-dark);
+  color: #F5F5F5;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: var(--red-accent);
+}
+
+/* STATS GRID */
+.stats-grid {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: var(--blue-light);
+  padding: 20px;
+  border-radius: 6px;
+  min-width: 220px;
+}
+
+.card h3 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.big-number {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+/* TABLE */
+.table-section h2 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  background-color: var(--blue-light);
+  padding: 15px;
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--bg-primary);
+}
+
+th {
+  background-color: var(--blue-dark);
+  color: #F5F5F5;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #d9d9d9;
+  font-size: 13px;
+}
+
+/* SCORE HIGHLIGHTING (Subtle, Not Loud) */
+.score-high {
+  background-color: rgba(1, 51, 100, 0.08);
+  font-weight: 600;
+}
+
+.score-low {
+  background-color: rgba(211, 11, 13, 0.08);
+  font-weight: 600;
+}
+
+/* LOADING */
+.loading {
+  padding: 60px;
+  text-align: center;
+  color: var(--blue-dark);
+}
