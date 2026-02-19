@@ -168,7 +168,7 @@ td {
   color: var(--blue-dark);
 }
 
-/* --- NEW: RESPONSIVE DESIGN FOR SMALLER SCREENS --- */
+/* RESPONSIVE DESIGN FOR SMALLER SCREENS */
 @media (max-width: 900px) {
   /* Shrinks the overall width of the button column */
   .header-actions {
