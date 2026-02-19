@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { fetchAllResults } from "../services/surveyService";
+import * as XLSX from "xlsx";
 import "./Dashboard.css";
 
 function Dashboard() {
@@ -106,6 +107,64 @@ function Dashboard() {
   const topIssues = sortedByScore.slice(0, 3);
   const lowestIssues = sortedByScore.slice(-3).reverse();
 
+  // Format current data
+  const getFormattedData = () => {
+    return filteredResults.map(entry=>{
+      const dateString = entry.submittedAt 
+      ? entry.submittedAt.toDate().toLocaleDateString()
+      : "N/A";
+
+      const row = {
+        "Submission ID": entry.id,
+        "Date": dateString,
+        "County": entry.county || "Pinellas",
+      };
+
+      if(entry.ageGroup) row["Age Group"] = entry.ageGroup;
+
+      sortedIssues.forEach(issue => {
+        const issueNumber = issue.replace(/\D/g, "");
+        row[`Issue ${issueNumber}`] = entry.responses[issue] ?? "N/A";
+      });
+
+      return row;
+    });
+  };
+
+  //Export to CSV
+  const exportToCSV = () => {
+    const data = getFormattedData();
+    if(data.length === 0) return alert("No data to export.");
+
+    const headers = Object.keys(data[0]);
+    const csvRows = data.map(row => {
+      return headers.map(header => `"${row[header]}"`).join(",");
+    })
+
+    const csvContent = [headers.join(","), ...csvRows].join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "community_survey_data.csv");
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  //Export to Excel
+  const exportToXLSX = () => {
+    const data = getFormattedData();
+    if(data.length === 0) return alert("No data to export.");
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Survey Responses");
+    XLSX.writeFile(workbook, `community_survey_data${selectedCounty !== "All" ? `_${selectedCounty}` : ""}.xlsx`);
+  };
+
+
   if (loading) return <div className="loading">Verifying Admin Access...</div>;
 
   return (
@@ -117,9 +176,21 @@ function Dashboard() {
             Pinellas County Survey Data Overview
           </p>
         </div>
-        <button onClick={handleLogout} className="logout-btn">
-          Logout
-        </button>
+        
+        {/* Large Action Buttons */}
+        <div className="header-actions">
+          <button onClick={exportToCSV} className="action-btn csv-btn">
+            Export CSV
+          </button>
+          
+          <button onClick={exportToXLSX} className="action-btn xlsx-btn">
+            Export XLSX
+          </button>
+          
+          <button onClick={handleLogout} className="action-btn logout-btn">
+            Logout
+          </button>
+        </div>
       </header>
 
       {/* SUMMARY CARDS */}

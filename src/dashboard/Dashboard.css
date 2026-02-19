@@ -19,8 +19,14 @@
 .dashboard-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; 
   margin-bottom: 40px;
+}
+
+.dashboard-header > div:first-child {
+  flex: 1;
+  text-align: center;
+  padding-left: 150px; 
 }
 
 .dashboard-header h1 {
@@ -35,15 +41,49 @@
   font-size: 14px;
 }
 
-/* BUTTON */
-.logout-btn {
-  background-color: var(--blue-dark);
-  color: #F5F5F5;
+/* HEADER BUTTONS (Stacked Column) */
+.header-actions {
+  display: flex;
+  flex-direction: column; 
+  gap: 10px; 
+  width: 150px; 
+}
+
+.action-btn {
+  width: 100%; 
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
   border: none;
-  padding: 8px 18px;
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  color: #F5F5F5;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.action-btn:active {
+  transform: scale(0.97);
+}
+
+.csv-btn {
+  background-color: #17a2b8;
+}
+
+.csv-btn:hover {
+  background-color: #138496;
+}
+
+.xlsx-btn {
+  background-color: #28a745;
+}
+
+.xlsx-btn:hover {
+  background-color: #218838;
+}
+
+.logout-btn {
+  background-color: var(--blue-dark);
 }
 
 .logout-btn:hover {
@@ -110,7 +150,7 @@ td {
   font-size: 13px;
 }
 
-/* SCORE HIGHLIGHTING (Subtle, Not Loud) */
+/* SCORE HIGHLIGHTING */
 .score-high {
   background-color: rgba(1, 51, 100, 0.08);
   font-weight: 600;
@@ -126,4 +166,24 @@ td {
   padding: 60px;
   text-align: center;
   color: var(--blue-dark);
+}
+
+/* --- NEW: RESPONSIVE DESIGN FOR SMALLER SCREENS --- */
+@media (max-width: 900px) {
+  /* Shrinks the overall width of the button column */
+  .header-actions {
+    width: 100px;
+    gap: 8px;
+  }
+
+  /* Shrinks the buttons themselves */
+  .action-btn {
+    padding: 6px 0;
+    font-size: 11px;
+  }
+
+  /* Adjusts the title offset so it stays perfectly centered with the smaller buttons */
+  .dashboard-header > div:first-child {
+    padding-left: 100px; 
+  }
 }
