@@ -112,6 +112,8 @@
 
 .table-wrapper {
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: 500px;
   background-color: var(--blue-light);
   padding: 15px;
   border-radius: 6px;
