@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+  --bg: #F5F5F5;
+  --text: #013364;
+  --accent: #E1E8ED;
+  --red: #D30B0D;
+  --font-body: 'Inter', Arial, sans-serif;
+  --font-heading: 'Montserrat', Arial, sans-serif;
+  --font-questions: 'Inter', Arial, sans-serif; 
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+  body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  width: 100%;
+}
+
+header {
+  background: var(--accent);
+  padding: 25px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 100%;
+}
+
+header h1 {
+  font-family: var(--font-heading);
+  margin-bottom: 10px;
+}
+
+.badge {
+  background: var(--text);
+  color: var(--bg);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+header p {
+  color: #666;
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.scale-info {
+  font-family: var(--font-body);
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  max-width: 350px;
+  margin: 10px auto 0;
+  font-size: 13px;
+  color: #888;
+}
+
+.question-box {
+  font-family: var(--font-questions);
+  font-weight: 600;
+  background: var(--bg);
+  padding: 20px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.question-box p {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.question-box input[type="range"] {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #ddd;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.question-box input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  background: var(--text);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.question-box input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: #2563eb;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+.value-bubble {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0 8px;
+  background: #2563eb;
+  color: white;
+  padding: 4px 14px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tick-marks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text);
+  padding: 0 2px;
+}
+
+.submit-btn {
+  font-family: var(--font-heading);
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 30px auto;
+  padding: 14px;
+  background: var(--text);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: var(--red);
+}
+
+.submit-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.hint {
+  font-family: var(--font-body);
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  margin-top: -15px;
+}
+
+.thankyou {
+  background: var(--bg);
+  padding: 50px 30px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 40px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.thankyou h1 {
+  color: var(--text);
+  margin-bottom: 15px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.thankyou p {
+  color: #666;
+  margin-bottom: 8px;
+  font-family: var(--font-heading);
+}
+
+.thankyou button {
+  font-family: var(--font-body);
+  font-weight: 600;
+  margin-top: 25px;
+  padding: 10px 25px;
+  background: white;
+  color: #2563eb;
+  border: 2px solid #2563eb;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.thankyou button:hover {
+  background: #2563eb;
+  color: white;
+}
